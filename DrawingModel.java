@@ -1,10 +1,14 @@
 import java.awt.Color;
+import java.awt.Graphics;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class DrawingModel {
-	protected ArrayList<Shape> shapes;
+	protected ArrayList<Shape> shapes = new ArrayList<Shape>();
+	protected ArrayList<View> views = new ArrayList<View>();
 	protected Color c;
 	protected int size, x, y;
+	protected Random rand = new Random();
 	
 	/**
 	 * This method returns a deep copy of an ArrayList
@@ -13,7 +17,12 @@ public class DrawingModel {
 	 * @return
 	 */
 	public ArrayList<Shape> deepCopy(ArrayList<Shape> s) {
-		return shapes;
+		ArrayList<Shape> newShapes = new ArrayList<Shape>(s.size());
+		for (int i = 0; i < s.size(); i++) {// loop to copy ArrayList
+			Shape placeholder = (Shape) s.get(i);
+			newShapes.add(placeholder); //
+		}
+		return newShapes;
 	}
 	
 	/**
@@ -51,15 +60,23 @@ public class DrawingModel {
 	/**
 	 * This method allows the user to add a shape to the
 	 * frame.
-	 * @param s
-	 * @return
 	 */
 	public void addShape() {
 		System.out.println("New shape added."); // Alerts user to new shape
 		createShape();
 	}
 	
+	public ArrayList<Shape> getShapes(Graphics g) {
+		return shapes;
+	}
+	
+	
 	private void createShape() {
+		c = new Color(rand.nextInt());
+		x = rand.nextInt(200);
+		y = rand.nextInt(200);
+		size = rand.nextInt(200);
 		
 	}
 }
+
