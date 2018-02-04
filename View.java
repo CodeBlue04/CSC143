@@ -4,7 +4,7 @@
  *
  */
 public interface View {
-	
-	public void update(AbstractShape model);
-	
+
+	public void update(DrawingModel model);
+
 }
