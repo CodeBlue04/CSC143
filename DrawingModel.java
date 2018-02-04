@@ -9,10 +9,10 @@ public class DrawingModel {
 	protected Color c;
 	protected int size, x, y;
 	protected Random rand = new Random();
-	
+
 	/**
-	 * This method returns a deep copy of an ArrayList
-	 * of shapes.
+	 * This method returns a deep copy of an ArrayList of shapes.
+	 * 
 	 * @param s
 	 * @return
 	 */
@@ -24,59 +24,70 @@ public class DrawingModel {
 		}
 		return newShapes;
 	}
-	
+
 	/**
-	 * This method allows other classes to query
-	 * the size of the shape in question
+	 * This method allows other classes to query the size of the shape in question
+	 * 
 	 * @return
 	 */
 	public int getSize() {
-		return size; // returns size of shape as int
+		return this.size; // returns size of shape as int
 	}
-	
+
 	/**
-	 * This method returns the coordinates of the shape
-	 * in an int array, with index 0 being x, and
-	 * index 1 being y.
+	 * This method returns the coordinates of the shape in an int array, with index
+	 * 0 being x, and index 1 being y.
+	 * 
 	 * @return
 	 */
 	public int[] getCoord() {
 		int[] coord = new int[2];// creates new int array with 2 indexes to store values
-		coord[0] = x; // Index 0 stores the X coordinate
-		coord[1] = y; // Index 1 stores the Y coordinate
+		coord[0] = this.x; // Index 0 stores the X coordinate
+		coord[1] = this.y; // Index 1 stores the Y coordinate
 		return coord;
 	}
-	
-	
+
 	/**
-	 * This method allows other classes to query
-	 * the color of the shape in question.
+	 * This method allows other classes to query the color of the shape in question.
+	 * 
 	 * @return
 	 */
 	public Color getColor() {
-		return c; // returns color of shape using constant c
+		return this.c; // returns color of shape using constant c
 	}
-	
+
 	/**
-	 * This method allows the user to add a shape to the
-	 * frame.
+	 * This method allows the user to add a shape to the frame.
 	 */
-	public void addShape() {
+	public void addShape(Shape s) {
 		System.out.println("New shape added."); // Alerts user to new shape
+		shapes.add(s);
+//		updateViews();
 		createShape();
 	}
-	
+
 	public ArrayList<Shape> getShapes(Graphics g) {
 		return shapes;
 	}
 	
+	public void addView(View v) {
+		views.add(v);
+		v.update(this);
+	}
+
 	
 	private void createShape() {
-		c = new Color(rand.nextInt());
-		x = rand.nextInt(200);
-		y = rand.nextInt(200);
-		size = rand.nextInt(200);
-		
+//		c = new Color(rand.nextInt());
+//		x = rand.nextInt(200);
+//		y = rand.nextInt(200);
+//		size = rand.nextInt(200);
+		int quadrant = 1;
+		int shapeModel = 1;
+		if (shapeModel == 0) {
+			HShape h = new HShape(x, y, c, size);
+		} else {
+			FibonacciSquare fib = new FibonacciSquare(x, y, c, quadrant, size);
+		}
+
 	}
 }
-
