@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class FibonacciSquare extends AbstractShape {
 
+
 //	private Random rand = new Random();
 
 	/**
@@ -14,12 +15,12 @@ public class FibonacciSquare extends AbstractShape {
 	 * @param c
 	 * @param size
 	 */
-	public FibonacciSquare(int x, int y, Color c, int quadrant, int size) {
-		super(x, y, Color.RED, size);
+	public FibonacciSquare(int x, int y, int n,  Color c, int quadrant) {
+		super(x, y, fibNum(n), Color.RED);
 		this.quadrant = quadrant;
 	}
 
-	public int fibNum(int n) {
+	public static int fibNum(int n) {
 		if (n <= 1) {
 			return n;
 		} else {
@@ -32,19 +33,20 @@ public class FibonacciSquare extends AbstractShape {
 		int y = this.y;
 		Color c = this.c;
 		int quadrant = this.quadrant;
-		int size = this.size;
-		return new FibonacciSquare(x, y, c, quadrant, size);
+		int n = this.size;
+		return new FibonacciSquare(x, y, n, c, quadrant);
 	}
 
 	public void draw(Graphics g) {
 		g.setColor(this.c);
 
 		// g.drawRect(xCoord, yCoord, widthHeight, widthHeight);
+//		drawArc(int x, int y, int width, int height, int startAngle, int arcAngle)
 		switch (quadrant) {
 		// Quadrant 1
 		case 0:
-			g.drawRect(x + (size / 2), y, size, size);
-			g.drawArc(x, y, size, size, 0, 90);
+			g.drawRect(x, y, size, size);
+			g.drawArc(x-size, y, 2* size, 2* size, 0, 90);
 			break;
 
 		// Quadrant 2
