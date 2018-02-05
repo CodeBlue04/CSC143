@@ -9,8 +9,8 @@ import java.awt.Color;
 public abstract class AbstractShape implements Shape {
 	protected int x; // X coordinate
 	protected int y; // Y coordinate
-	protected int size; // Size
-	protected int quadrant; // Quadrant for Fibonacci Square shape
+	protected int size; // Size for HShape, n for FibonacciSquare
+	protected int quadrant; // Quadrant for Fibonacci Square shape, must be here for FibonacciSquare constructor to work
 	protected Color c; // Color of shape
 
 	/**
@@ -20,11 +20,10 @@ public abstract class AbstractShape implements Shape {
 	 * @param y
 	 * @param c
 	 */
-	public AbstractShape(int x, int y, int size, Color c) {
+	public AbstractShape(int x, int y, int size, Color c) {//Basic constructor
 		this.x = x;
 		this.y = y;
 		this.size = size;
 		this.c = c;
 	}
-//Done, do not edit without good cause - good cause found to move size in constructor
 }
