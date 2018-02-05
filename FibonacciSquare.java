@@ -5,8 +5,6 @@ import java.util.Random;
 public class FibonacciSquare extends AbstractShape {
 
 
-//	private Random rand = new Random();
-
 	/**
 	 * Constructor for Fibonacci Square shape
 	 * 
@@ -20,6 +18,11 @@ public class FibonacciSquare extends AbstractShape {
 		this.quadrant = quadrant;
 	}
 
+	/**
+	 * Simple recursion method that calculates the Fibonacci number n.
+	 * @param n
+	 * @return
+	 */
 	public static int fibNum(int n) {
 		if (n <= 1) {
 			return n;
@@ -28,6 +31,10 @@ public class FibonacciSquare extends AbstractShape {
 		}
 	}
 
+	/**
+	 * This method returns a deep copy of the fibonacci square in question.
+	 * @return
+	 */
 	public Shape deepCopy() {
 		int x = this.x;
 		int y = this.y;
@@ -37,34 +44,36 @@ public class FibonacciSquare extends AbstractShape {
 		return new FibonacciSquare(x, y, n, c, quadrant);
 	}
 
+	/**
+	 * This method draws out the Fibonacci square and spiral with switch cases 
+	 * for each of 4 possible quadrants.
+	 */
 	public void draw(Graphics g) {
 		g.setColor(this.c);
-
-		// g.drawRect(xCoord, yCoord, widthHeight, widthHeight);
-//		drawArc(int x, int y, int width, int height, int startAngle, int arcAngle)
+		quadrant = this.quadrant+1;
 		switch (quadrant) {
 		// Quadrant 1
-		case 0:
+		case 1:
 			g.drawRect(x, y, size, size);
 			g.drawArc(x-size, y, 2* size, 2* size, 0, 90);
 			break;
 
 		// Quadrant 2
-		case 1:
-			g.drawRect(x + (size / 2), y, size, size);
-			g.drawArc(x, y, size, size, 90, 180);
+		case 2:
+			g.drawRect(x, y, size, size);
+			g.drawArc(x, y-size, 2*size, 2*size, 180, 90);
 			break;
 
 		// Quadrant 3
-		case 2:
-			g.drawRect(x + (size / 2), y, size, size);
-			g.drawArc(x, y, size, size, 180, 270);
+		case 3:
+			g.drawRect(x, y, size, size);
+			g.drawArc(x, y-size, 2*size, 2*size, 180, 90);
 			break;
 
 		// Quadrant 4
-		case 3:
-			g.drawRect(x + (size / 2), y, size, size);
-			g.drawArc(x, y, size, size, 270, 0);
+		case 4:
+			g.drawRect(x, y, size, size);
+			g.drawArc(x-size, y-size, 2*size, 2*size, 0, -90);
 			break;
 
 		}
