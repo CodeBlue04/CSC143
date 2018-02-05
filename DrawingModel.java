@@ -82,12 +82,13 @@ public class DrawingModel {
 //		y = rand.nextInt(200);
 //		size = rand.nextInt(200);
 		int quadrant = 1;
-		int shapeModel = 1;
+		int shapeModel = 0;
 		if (shapeModel == 0) {
-			HShape h = new HShape(x, y, c, size);
+			HShape h = new HShape(x, y,  size, c);
 		} else {
-			FibonacciSquare fib = new FibonacciSquare(x, y, c, quadrant, size);
+			FibonacciSquare fib = new FibonacciSquare(x, y, size, c, quadrant);
 		}
 
 	}
 }
+
