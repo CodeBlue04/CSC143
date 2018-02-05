@@ -19,13 +19,12 @@ public abstract class AbstractShape implements Shape {
 	 * @param x
 	 * @param y
 	 * @param c
-	 * @param size
 	 */
-	public AbstractShape(int x, int y, Color c, int size) {
+	public AbstractShape(int x, int y, int size, Color c) {
 		this.x = x;
 		this.y = y;
-		this.c = c;
 		this.size = size;
+		this.c = c;
 	}
-//Done, do not edit without good cause
+//Done, do not edit without good cause - good cause found to move size in constructor
 }
