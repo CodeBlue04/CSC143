@@ -7,7 +7,7 @@ public class DrawingModel {
 	protected ArrayList<Shape> shapes = new ArrayList<Shape>();
 	protected ArrayList<View> views = new ArrayList<View>();
 	protected Color c;
-	protected int size, x, y;
+	protected int size, x, y, quadrant;
 	protected Random rand = new Random();
 
 	/**
@@ -26,7 +26,7 @@ public class DrawingModel {
 	}
 
 	/**
-	 * This method allows other classes to query the size of the shape in question
+	 * This method allows other classes to query the size/n value of the shape in question
 	 * 
 	 * @return
 	 */
@@ -62,33 +62,32 @@ public class DrawingModel {
 	public void addShape(Shape s) {
 		System.out.println("New shape added."); // Alerts user to new shape
 		shapes.add(s);
-//		updateViews();
 		createShape();
 	}
 
+	/**
+	 * This method returns the ArrayList of shapes.
+	 * @param g
+	 * @return
+	 */
 	public ArrayList<Shape> getShapes(Graphics g) {
 		return shapes;
 	}
 	
+	/**
+	 * This method adds View v to ArrayList of Views.
+	 * @param v
+	 */
 	public void addView(View v) {
 		views.add(v);
 		v.update(this);
 	}
 
-	
+	/**
+	 * This method creates shapes 
+	 */
 	private void createShape() {
-//		c = new Color(rand.nextInt());
-//		x = rand.nextInt(200);
-//		y = rand.nextInt(200);
-//		size = rand.nextInt(200);
-		int quadrant = 1;
-		int shapeModel = 0;
-		if (shapeModel == 0) {
 			HShape h = new HShape(x, y,  size, c);
-		} else {
 			FibonacciSquare fib = new FibonacciSquare(x, y, size, c, quadrant);
-		}
-
 	}
 }
-
