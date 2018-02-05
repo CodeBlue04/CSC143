@@ -5,24 +5,26 @@ import javax.swing.JPanel;
 
 public class Viewer extends JPanel implements View {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-
 	protected DrawingModel model;
-	
 	protected Graphics g;
 
+	/**
+	 * Update method used to repaint shape in question.
+	 */
 	public void update(DrawingModel model) {
-		this.model = model; //repaints this DrawingModel object 
+		this.model = model; // repaints this DrawingModel object
 		repaint();
 	}
+
+	/**
+	 * This method goes through the ArrayList of shapes and draws them all.
+	 */
 	@Override
-	public void paintComponent(Graphics g) { //paints all components in the Arraylist of shapes
+	public void paintComponent(Graphics g) { // paints all components in the Arraylist of shapes
 		super.paintComponents(g);
 		if (this != null) {
-			for (Shape shape: model.getShapes(g)) {
+			for (Shape shape : model.getShapes(g)) {
 				shape.draw(g);
 			}
 		}
