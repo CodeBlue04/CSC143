@@ -21,10 +21,10 @@ public class DrawingModel {
 	 * @param s
 	 * @return
 	 */
-	public ArrayList<Shape> getShapes(ArrayList<Shape> s) {
-		ArrayList<Shape> newShapes = new ArrayList<Shape>(s.size());
-		for (int i = 0; i < s.size(); i++) {// loop to copy ArrayList
-			Shape placeholder = (Shape) s.get(i);
+	public ArrayList<Shape> getShapes(Graphics g) {
+		ArrayList<Shape> newShapes = new ArrayList<Shape>(shapes.size());
+		for (int i = 0; i < shapes.size(); i++) {// loop to copy ArrayList
+			Shape placeholder = (Shape) shapes.get(i);
 			newShapes.add(placeholder); //
 		}
 		return newShapes;
