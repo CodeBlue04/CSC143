@@ -2,7 +2,12 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Random;
-
+/**
+ * DrawingModel class does the marjority of the heavy lifting, with methods returning various
+ * values and objects to other classes.
+ * @author Colby Easton, Max Sutters
+ *
+ */
 public class DrawingModel {
 	protected ArrayList<Shape> shapes = new ArrayList<Shape>();
 	protected ArrayList<View> views = new ArrayList<View>();
@@ -16,7 +21,7 @@ public class DrawingModel {
 	 * @param s
 	 * @return
 	 */
-	public ArrayList<Shape> deepCopy(ArrayList<Shape> s) {
+	public ArrayList<Shape> getShapes(ArrayList<Shape> s) {
 		ArrayList<Shape> newShapes = new ArrayList<Shape>(s.size());
 		for (int i = 0; i < s.size(); i++) {// loop to copy ArrayList
 			Shape placeholder = (Shape) s.get(i);
@@ -28,7 +33,7 @@ public class DrawingModel {
 	/**
 	 * This method allows other classes to query the size/n value of the shape in question
 	 * 
-	 * @return
+	 * @return size
 	 */
 	public int getSize() {
 		return this.size; // returns size of shape as int
@@ -38,7 +43,7 @@ public class DrawingModel {
 	 * This method returns the coordinates of the shape in an int array, with index
 	 * 0 being x, and index 1 being y.
 	 * 
-	 * @return
+	 * @return coordinates in int[]
 	 */
 	public int[] getCoord() {
 		int[] coord = new int[2];// creates new int array with 2 indexes to store values
@@ -50,7 +55,7 @@ public class DrawingModel {
 	/**
 	 * This method allows other classes to query the color of the shape in question.
 	 * 
-	 * @return
+	 * @return Color c
 	 */
 	public Color getColor() {
 		return this.c; // returns color of shape using constant c
@@ -65,15 +70,6 @@ public class DrawingModel {
 		createShape();
 	}
 
-	/**
-	 * This method returns the ArrayList of shapes.
-	 * @param g
-	 * @return
-	 */
-	public ArrayList<Shape> getShapes(Graphics g) {
-		return shapes;
-	}
-	
 	/**
 	 * This method adds View v to ArrayList of Views.
 	 * @param v
